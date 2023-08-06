@@ -1,5 +1,4 @@
 ---
-layout: post
 title:  "My Solution to running Ruby on a M1 Mac"
 description: "story of trying to get ruby to run on an M1 Mac"
 pubDate: Aug 12 2021

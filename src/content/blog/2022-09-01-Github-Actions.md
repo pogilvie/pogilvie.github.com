@@ -1,5 +1,4 @@
 ---
-layout: post
 title:  "GitHub Actions"
 description: this is a required field
 pubDate: 2022 01 Sep
