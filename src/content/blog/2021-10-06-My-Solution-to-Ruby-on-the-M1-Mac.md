@@ -4,7 +4,7 @@ description: "story of trying to get ruby to run on an M1 Mac"
 pubDate: Aug 12 2021
 ---
 
-# Problem
+### Problem
 
 Trying to use the Jekyll microblogging framework results in errors show below on Apple Silicon Macs (M1 processor)
 
@@ -23,7 +23,7 @@ The root of the issue seems to be that the Ruby runtime system encodes a *single
 
 All of this is well explained by [Martin Albrech](https://betterprogramming.pub/ruby-on-apple-silicon-m1-macs-fb159849b2f5)
 
-# Solution
+### Solution
 
 ```
 -> brew install ruby
