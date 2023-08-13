@@ -1,0 +1,109 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
+const title = "Demo Page";
+---
+<!DOCTYPE html>
+<html>
+    <head>
+        <BaseHead title={title} description="Canvas Demo" />
+    </head>
+    <body>
+        <Header title={title} />
+        <main>
+            <canvas id="canvas1" width="300" height="300">
+                <p>Screen Reader: canvas drawing experiment</p>
+            </canvas>
+            <canvas id="canvas2" width="300" height="300">
+                <p>Screen Reader: canvas drawing experiment</p>
+            </canvas>
+        </main>
+        <Footer />
+    </body>
+</html>
+<script>
+    import { msg } from "../../client/msg";
+
+    function drawTriangle() : Path2D {
+        const triangle = new Path2D();
+        triangle.moveTo(175, 150);
+        triangle.lineTo(200, 175);
+        triangle.lineTo(200, 125);
+        return triangle;
+    }
+
+    function draw() : void {
+        const canvas = document.getElementById("canvas1") as HTMLCanvasElement;
+
+        const ctx = canvas.getContext("2d");
+        if (ctx) {
+            ctx.fillStyle = "rgb(200, 0, 0)";
+            ctx.fillRect(10, 10, 50, 50);
+
+            ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
+            ctx.fillRect(30, 30, 50, 50);
+
+            ctx.fill(drawTriangle());
+            ctx.shadowColor = "rgba(0, 0, 255, 1";
+            ctx.shadowBlur = 10;
+            ctx.shadowOffsetX  = 0;
+            ctx.shadowOffsetY = 0;
+            ctx.fill(drawTriangle());
+            ctx.shadowBlur = 0;
+            ctx.shadowColor = "transparent";
+
+        } else {
+            console.log("Canvas: unable to get drawing context");
+        }
+    }
+
+    function drawConicGradient() {
+        const canvas = document.getElementById("canvas2") as HTMLCanvasElement;
+
+        if (canvas) {
+            const ctx = canvas.getContext("2d");
+            if (ctx) {
+                // Create gradients
+                const radgrad = ctx.createRadialGradient(45, 45, 10, 52, 50, 30);
+                radgrad.addColorStop(0, "#A7D30C");
+                radgrad.addColorStop(0.9, "#019F62");
+                radgrad.addColorStop(1, "rgba(1, 159, 98, 0)");
+
+                const radgrad2 = ctx.createRadialGradient(105, 105, 20, 112, 120, 50);
+                radgrad2.addColorStop(0, "#FF5F98");
+                radgrad2.addColorStop(0.75, "#FF0188");
+                radgrad2.addColorStop(1, "rgba(255, 1, 136, 0)");
+
+                const radgrad3 = ctx.createRadialGradient(95, 15, 15, 102, 20, 40);
+                radgrad3.addColorStop(0, "#00C9FF");
+                radgrad3.addColorStop(0.8, "#00B5E2");
+                radgrad3.addColorStop(1, "rgba(0, 201, 255, 0)");
+
+                const radgrad4 = ctx.createRadialGradient(0, 150, 50, 0, 140, 90);
+                radgrad4.addColorStop(0, "#F4F201");
+                radgrad4.addColorStop(0.8, "#E4C700");
+                radgrad4.addColorStop(1, "rgba(228, 199, 0, 0)");
+
+                // draw shapes
+                ctx.fillStyle = radgrad4;
+                ctx.fillRect(0, 0, 300, 300);
+                ctx.fillStyle = radgrad3;
+                ctx.fillRect(0, 0, 300, 300);
+                ctx.fillStyle = radgrad2;
+                ctx.fillRect(0, 0, 300, 300);
+                ctx.fillStyle = radgrad;
+                ctx.fillRect(0, 0, 300, 300);
+            }
+        }
+    }
+    console.log(msg("Peter"));
+    window.addEventListener("load", draw);
+    window.addEventListener("load", drawConicGradient);
+</script>
+<style>
+    canvas {
+        border: 1px solid black
+    }
+</style>

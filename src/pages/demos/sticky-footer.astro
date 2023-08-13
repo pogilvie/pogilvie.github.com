@@ -1,0 +1,48 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+const title = "Sticky Footer"
+---
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <BaseHead title={title} description="sticky footer demo" />
+    </head>
+    <body>
+        <Header title={title} />
+        <div class="container">
+            <div class="title">Veniam labore</div>
+            <div class="content">Dolore non consequat amet ullamco cillum labore nulla cupidatat incididunt enim occaecat aute. Sint voluptate qui labore quis tempor est sunt dolor dolore. Irure est id in consectetur proident dolor. Aute eu cillum veniam cupidatat eiusmod nostrud reprehenderit tempor labore anim. Excepteur enim incididunt occaecat nisi sint minim mollit ipsum proident reprehenderit. Nostrud cillum cillum aute culpa cillum pariatur deserunt.</div>
+            <div class="footer">THREE</div>
+
+        </div>
+
+    </body>
+</html>
+<style>
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 58px);
+    margin: auto;
+    height: 500px;
+}
+.title {
+    color: #ee6352;
+    margin: 1rem auto;
+    line-height: 0.8;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 3rem;
+}
+.content {
+    padding: 3rem;
+}
+.footer {
+    text-align: center;
+    margin: auto 0 0 0;
+    background-color: gray;
+    color: white;
+}
+</style>
